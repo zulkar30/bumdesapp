@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 // H
 Route::get('/', function () {
+    // Dashboard route
     return redirect()->route('dashboard');
 });
 
@@ -32,9 +33,10 @@ Route::prefix('dashboard')
         Route::resource('product', ProductController::class);
         Route::resource('transaction', TransactionController::class);
         Route::get('transaction/{id}/status/{status}', [TransactionController::class, 'changeStatus'])->name('transaction.changeStatus');
+        Route::get('transcation/sales-history', [TransactionController::class, 'salesHistory'])->name('transaction.history');
     });
 
-// Midtrans related
+// Midtrans route
 Route::get('midtrans/success', [MidtransController::class, 'success']);
 Route::get('midtrans/unfinish', [MidtransController::class, 'unfinish']);
 Route::get('midtrans/error', [MidtransController::class, 'error']);

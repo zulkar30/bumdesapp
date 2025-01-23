@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Cart;
+use App\Models\Review;
+use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -17,9 +20,32 @@ class Product extends Model
         'price',
         'rate',
         'types',
+        'stock',
         'categories',
         'picturePath'
     ];
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'product_id');
+    }
+
+    // Relasi ke model Review
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    // Dapatkan rating rata-rata produk
+    public function getAverageRatingAttribute()
+    {
+        return round($this->reviews->avg('rate'), 1); // Menghitung rata-rata rating produk
+    }
 
     public function getCreatedAtAttribute($value)
     {

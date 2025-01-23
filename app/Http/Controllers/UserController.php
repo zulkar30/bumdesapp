@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::paginate(10);
+        $user = User::where('id', '!=', 1)->paginate(10);
 
         return view('users.index', compact('user'));
     }
@@ -39,11 +40,12 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $data = $request->all();
+        $data['password'] = Hash::make($request->password);
         $data['picturePath'] = $request->file('picturePath')->store('assets/user', 'public');
 
         User::create($data);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan');
     }
 
     /**
@@ -94,7 +96,7 @@ class UserController extends Controller
         
         $user->update($data);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User berhasil diedit');
     }
 
     /**
@@ -107,6 +109,6 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User berhasil dihapus');
     }
 }

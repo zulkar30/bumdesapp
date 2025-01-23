@@ -42,9 +42,10 @@ class ProductController extends Controller
 
         $data['picturePath'] = $request->file('picturePath')->store('assets/product', 'public');
 
+        // dd($data);
         Product::create($data);
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil ditambahkan');
     }
 
     /**
@@ -86,7 +87,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil diedit');
     }
 
     /**
@@ -99,6 +100,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil dihapus');
     }
 }

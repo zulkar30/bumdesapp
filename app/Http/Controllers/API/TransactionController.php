@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Exception;
 use Midtrans\Snap;
 use Midtrans\Config;
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
@@ -63,6 +64,19 @@ class TransactionController extends Controller
             'status' => 'required'
         ]);
 
+        // Cari produk berdasarkan product_id
+        $product = Product::find($request->product_id);
+
+        // Cek apakah stok cukup untuk transaksi
+        if ($product->stock < $request->quantity) {
+            return ResponseFormatter::error('Stok tidak cukup', 'Gagal membuat transaksi');
+        }
+
+        // Kurangi stok produk
+        $product->stock -= $request->quantity;
+        $product->save();
+
+        // Buat transaksi
         $transaction = Transaction::create([
             'product_id' => $request->product_id,
             'user_id' => $request->user_id,
@@ -84,7 +98,7 @@ class TransactionController extends Controller
         // Buat transaksi midtrans
         $midtrans = [
             'transaction_details' => [
-                'order_id' => $transaction->id,
+                'order_id' => $transaction->id . time(),
                 'gross_amount' => (int) $transaction->total
             ],
             'customer_details' => [
@@ -112,4 +126,5 @@ class TransactionController extends Controller
             return ResponseFormatter::error($e->getMessage(), 'Transaksi gagal');
         }
     }
+
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-300 dark:text-gray-300 leading-tight">
-            Product &raquo; {{ $product->name }} &raquo; Edit
+        <h2 class="font-semibold text-xl text-gray-700 dark:text-gray-300 leading-tight">
+            Produk &raquo; {{ $product->name }} &raquo; Edit
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
                 @if ($errors->any())
                     <div class="mb-5" role="alert">
                         <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                            There's Something Wrong
+                            Edit tidak selesai, ada sesuatu yang salah
                         </div>
                         <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                             <p>
@@ -32,33 +32,33 @@
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Name
+                                Nama
                             </label>
                             <input value="{{ old('name') ?? $product->name }}" name="name"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="text" placeholder="Product Name">
+                                id="grid-last-name" type="text" placeholder="Nama Produk">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Image
+                                Gambar
                             </label>
                             <input name="picturePath"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="file" placeholder="Product Image">
+                                id="grid-last-name" type="file" placeholder="Gambar Produk">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Description
+                                Deskripsi
                             </label>
                             <textarea name="description"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="text" placeholder="Product Description">{{ old('description') ?? $product->description }}</textarea>
+                                id="grid-last-name" type="text" placeholder="Deskripsi Produk">{{ old('description') ?? $product->description }}</textarea>
                         </div>
                     </div>
             </div>
@@ -66,27 +66,27 @@
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="grid-last-name">
-                        Price
+                        Harga
                     </label>
                     <input value="{{ old('price') ?? $product->price }}" name="price"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-last-name" type="number" placeholder="Product Price">
+                        id="grid-last-name" type="number" placeholder="Harga Produk">
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="grid-last-name">
-                        Rate
+                        Stok
                     </label>
-                    <input value="{{ old('rate') ?? $product->rate }}" name="rate"
+                    <input value="{{ old('stock') ?? $product->stock }}" name="stock"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-last-name" type="number" step="0.01" max="5" placeholder="Product Rate">
+                        id="grid-last-name" type="number" placeholder="Stok Produk">
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
-                    <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="grid-last-name">
-                        Categories
+                        Kategori
                     </label>
                     <select name="categories"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -103,20 +103,20 @@
                 <div class="w-full px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="grid-last-name">
-                        Types
+                        Tipe
                     </label>
                     <input value="{{ old('types') ?? $product->types }}" name="types"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-last-name" type="text" placeholder="Product Types">
-                    <p class="text-gray-600 text-xs italic">Dipisahkan dengan koma, contoh: recommended, popular,
-                        new_product</p>
+                        id="grid-last-name" type="text" placeholder="Tipe Produk">
+                    <p class="text-gray-600 text-xs italic">Dipisahkan dengan koma, contoh: rekomendasi, populer,
+                        produk_baru</p>
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3 text-right">
                     <button type="submit"
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                        Update Product
+                        Edit Produk
                     </button>
                 </div>
             </div>

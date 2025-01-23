@@ -28,9 +28,9 @@ class ProductRequest extends FormRequest
             'picturePath' => 'required|image',
             'description' => 'required',
             'price' => 'required|integer',
-            'rate' => 'required|numeric',
             'categories' => ['required', 'string', 'max:255', 'in:BATIK,TENUN,TANJAK,AKSESORIS'],
             'types' => '',
+            'stock' => 'required|integer',
         ];
     }
 }

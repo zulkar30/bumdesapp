@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-300 dark:text-gray-300 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-700 dark:text-gray-300 leading-tight">
             Users &raquo; {{ $user->name }} &raquo; Edit
         </h2>
     </x-slot>
@@ -11,7 +11,7 @@
                 @if ($errors->any())
                     <div class="mb-5" role="alert">
                         <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                            There's Something Wrong
+                            Edit User gagal, ada sesuatu yang salah!
                         </div>
                         <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                             <p>
@@ -30,18 +30,18 @@
                     @method('PUT')
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Name
+                                Nama
                             </label>
                             <input value="{{ old('name') ?? $user->name }}" name="name"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="text" placeholder="User Name">
+                                id="grid-last-name" type="text" placeholder="Nama User">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
                                 Email
                             </label>
@@ -52,53 +52,53 @@
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Image
+                                Foto
                             </label>
                             <input name="picturePath"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="file" placeholder="User Image">
+                                id="grid-last-name" type="file" placeholder="Foto User">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Password
+                                Katasandi
                             </label>
                             <input value="{{ old('password') }}" name="password"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="password" placeholder="User Password">
+                                id="grid-last-name" type="password" placeholder="Katasandi">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Password Confirmation
+                                Konfirmasi Katasandi
                             </label>
                             <input value="{{ old('password_confirmation') }}" name="password_confirmation"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="password" placeholder="User Password Confirmation">
+                                id="grid-last-name" type="password" placeholder="Konfirmasi Katasandi">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Address
+                                Alamat
                             </label>
                             <input value="{{ old('address') ?? $user->address }}" name="address"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="text" placeholder="User Address">
+                                id="grid-last-name" type="text" placeholder="Alamat User">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Roles
+                                Role
                             </label>
                             <select name="roles"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -111,42 +111,42 @@
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                House Number
+                                Nomor Rumah
                             </label>
                             <input value="{{ old('houseNumber') ?? $user->houseNumber }}" name="houseNumber"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="text" placeholder="User House Number">
+                                id="grid-last-name" type="text" placeholder="Nomor Rumah User">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Phone Number
+                                Telepon
                             </label>
                             <input value="{{ old('phoneNumber') ?? $user->phoneNumber }}" name="phoneNumber"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="text" placeholder="User Phone Number">
+                                id="grid-last-name" type="text" placeholder="Telepon">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                City
+                                Kota
                             </label>
                             <input value="{{ old('city') ?? $user->city }}" name="city"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" type="text" placeholder="User City">
+                                id="grid-last-name" type="text" placeholder="Kota">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3 text-right">
                             <button type="submit"
                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                Update User
+                                Edit User
                             </button>
                         </div>
                     </div>

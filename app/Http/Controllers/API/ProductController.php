@@ -12,7 +12,6 @@ class ProductController extends Controller
     public function all(Request $request)
     {
         $id = $request->input('id');
-        $limit = $request->input('limit', 6);
         $name = $request->input('name');
         $types = $request->input('types');
         $categories = $request->input('categories');
@@ -72,6 +71,6 @@ class ProductController extends Controller
             $product->where('rate', '<=', $rate_to);
         }
 
-        return ResponseFormatter::success($product->paginate($limit), 'Product data list is successfully taken');
+        return ResponseFormatter::success($product->get(), 'Product data list is successfully taken');
     }
 }
